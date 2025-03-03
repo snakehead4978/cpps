@@ -1,11 +1,11 @@
 {
 	"files.associations": {
-		"iosfwd": "cpp",
-		"*.tcc": "cpp",
+		"iostream": "cpp",
 		"ostream": "cpp",
 		"array": "cpp",
 		"atomic": "cpp",
 		"bit": "cpp",
+		"*.tcc": "cpp",
 		"cctype": "cpp",
 		"clocale": "cpp",
 		"cmath": "cpp",
@@ -36,7 +36,7 @@
 		"type_traits": "cpp",
 		"utility": "cpp",
 		"initializer_list": "cpp",
-		"iostream": "cpp",
+		"iosfwd": "cpp",
 		"istream": "cpp",
 		"limits": "cpp",
 		"new": "cpp",

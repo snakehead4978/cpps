@@ -5,27 +5,18 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: snek <snek@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/02 01:01:14 by snek              #+#    #+#             */
-/*   Updated: 2025/03/03 17:31:13 by snek             ###   ########.fr       */
+/*   Created: 2025/03/03 23:29:35 by snek              #+#    #+#             */
+/*   Updated: 2025/03/03 23:40:27 by snek             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Fixed.hpp"
+#include "ClapTrap.hpp"
 
 int	main()
 {
-	Fixed a;
-	Fixed const b( 10 );
-	Fixed const c( 42.42f );
-	Fixed const d( b );
-	a = Fixed( 1234.4321f );
-	std::cout << "a is " << a << std::endl;
-	std::cout << "b is " << b << std::endl;
-	std::cout << "c is " << c << std::endl;
-	std::cout << "d is " << d << std::endl;
-	std::cout << "a is " << a.toInt() << " as integer" << std::endl;
-	std::cout << "b is " << b.toInt() << " as integer" << std::endl;
-	std::cout << "c is " << c.toInt() << " as integer" << std::endl;
-	std::cout << "d is " << d.toInt() << " as integer" << std::endl;
-	return 0;
+	ClapTrap	clap1("ct1");
+	clap1.takeDamage(50);
+	ClapTrap	clap2(clap1);
+	clap2.attack("qtn");
+	return (0);
 }

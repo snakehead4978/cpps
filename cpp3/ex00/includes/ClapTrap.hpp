@@ -1,39 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Fixed.hpp                                          :+:      :+:    :+:   */
+/*   ClapTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: snek <snek@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/02 00:37:20 by snek              #+#    #+#             */
-/*   Updated: 2025/03/03 17:32:45 by snek             ###   ########.fr       */
+/*   Created: 2025/03/03 22:37:50 by snek              #+#    #+#             */
+/*   Updated: 2025/03/03 22:50:29 by snek             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef __FIXED_H
-# define __FIXED_H
+#ifndef __CLAPTRAP_H
+# define __CLAPTRAP_H
 
-# include <cmath>
 # include <iostream>
+# include <string>
 
-class Fixed
+class ClapTrap
 {
 	private:
-		int	__value;
-		static int const	__bits;
+		std::string	__name;
+		int			__hp;
+		int			__mana;
+		int			__str;
 	public:
-		Fixed();
-		Fixed(const Fixed& t);
-		Fixed(int const value);
-		Fixed(float const value);
-		Fixed&	operator=(const Fixed& t);
-		~Fixed();
-		int		getRawBits() const;
-		void	setRawBits(int const raw);
-		float	toFloat() const;
-		int		toInt() const;
+		ClapTrap(std::string name);
+		ClapTrap(const ClapTrap& t);
+		ClapTrap&	operator=(const ClapTrap& t);
+		~ClapTrap();
+		void	attack(const std::string& target);
+		void	takeDamage(unsigned int amount);
+		void	beRepaired(unsigned int amount);
 };
-
-std::ostream	&operator<<(std::ostream &ost, Fixed const &t);
 
 #endif
