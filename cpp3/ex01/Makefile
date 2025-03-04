@@ -11,7 +11,7 @@ vpath %.cpp src
 
 OBJ_DIR = obj/
 
-SRC = ClapTrap.cpp main.cpp
+SRC = ClapTrap.cpp main.cpp ScavTrap.cpp
 
 OBJ = $(addprefix $(OBJ_DIR), $(SRC:.cpp=.o))
 

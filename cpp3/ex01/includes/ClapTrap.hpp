@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ClapTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: snek <snek@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: jla-chon <jla-chon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/03 22:37:50 by snek              #+#    #+#             */
-/*   Updated: 2025/03/03 22:50:29 by snek             ###   ########.fr       */
+/*   Updated: 2025/03/04 18:32:50 by jla-chon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ class ClapTrap
 		int			__str;
 	public:
 		ClapTrap(std::string name);
+		ClapTrap(std::string name, int hp, int mana, int str);
 		ClapTrap(const ClapTrap& t);
 		ClapTrap&	operator=(const ClapTrap& t);
 		~ClapTrap();

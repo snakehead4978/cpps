@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   bsp.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: snek <snek@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: jla-chon <jla-chon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/03 18:53:11 by snek              #+#    #+#             */
-/*   Updated: 2025/03/03 21:58:56 by snek             ###   ########.fr       */
+/*   Updated: 2025/03/04 18:23:53 by jla-chon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,9 @@ bool	bsp(Point const a, Point const b, Point const c, Point const point)
 		return (false);
 	if (areaABP > area)
 		return (false);
-	if (areaABP > area)
+	if (areaACP > area)
 		return (false);
-	if (areaABP > area)
+	if (areaBCP > area)
 		return (false);
 	return (true);
 }

@@ -3,29 +3,31 @@
 /*                                                        :::      ::::::::   */
 /*   ClapTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: snek <snek@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: jla-chon <jla-chon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/03 22:46:18 by snek              #+#    #+#             */
-/*   Updated: 2025/03/03 23:45:43 by snek             ###   ########.fr       */
+/*   Updated: 2025/03/04 18:30:57 by jla-chon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
 
 
-ClapTrap::ClapTrap(std::string name) : __name(name), __hp(10), __mana(10), __str(0) { std::cout << "Default constructor called\n"; }
+ClapTrap::ClapTrap(std::string name) : __name(name), __hp(10), __mana(10), __str(0) { std::cout << "Claptrap Default constructor called\n"; }
 
-ClapTrap::~ClapTrap() { std::cout << "Destructor called\n"; }
+ClapTrap::ClapTrap(std::string name, int hp, int mana, int str) : __name(name), __hp(hp), __mana(mana), __str(str) { std::cout << "Claptrap overloaded constr called\n"; }
+
+ClapTrap::~ClapTrap() { std::cout << "Claptrap Destructor called\n"; }
 
 ClapTrap::ClapTrap(const ClapTrap& t)
 {
-	std::cout << "Copy constructor called\n";
+	std::cout << "Claptrap Copy constructor called\n";
 	*this = t;
 }
 
 ClapTrap&	 ClapTrap::operator=(const ClapTrap& t)
 {
-	std::cout << "Copy assignment operator called\n";
+	std::cout << "Claptrap Copy assignment operator called\n";
 	if (this != &t)
 	{
 		this->__hp = t.__hp;
