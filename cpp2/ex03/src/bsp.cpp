@@ -3,22 +3,24 @@
 /*                                                        :::      ::::::::   */
 /*   bsp.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jla-chon <jla-chon@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/03 18:53:11 by snek              #+#    #+#             */
-/*   Updated: 2025/03/04 18:23:53 by jla-chon         ###   ########.fr       */
+/*   Updated: 2025/05/21 18:06:23 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Point.hpp"
 
-static Fixed	triangle_area(Point const a, Point const b, Point const c)
+static float	triangle_area(Point const a, Point const b, Point const c)
 {
-	Fixed	var1(a.getX() * (b.getY() - c.getY()));
-	Fixed	var2(b.getX() * (c.getY() - a.getY()));
-	Fixed	var3(c.getX() * (a.getY() - b.getY()));
+	float	area;
+	float	var2(b.getX().toFloat() * (c.getY().toFloat() - a.getY().toFloat()));
+	float	var1(a.getX().toFloat() * (b.getY().toFloat() - c.getY().toFloat()));
+	float	var3(c.getX().toFloat() * (a.getY().toFloat() - b.getY().toFloat()));
 	
-	Fixed	area = (var1 + var2 + var3) / 2;
+	area = (var1 + var2 + var3) / 2;
+	// Fixed	area = (var1 + var2 + var3) / 2;
 	if (area < 0)
 		return (area * -1);
 	return (area);
@@ -26,10 +28,11 @@ static Fixed	triangle_area(Point const a, Point const b, Point const c)
 
 bool	bsp(Point const a, Point const b, Point const c, Point const point)
 {
-	Fixed	area = triangle_area(a, b, c);
-	Fixed	areaABP = triangle_area(a, b, point);
-	Fixed	areaACP = triangle_area(a, c, point);
-	Fixed	areaBCP = triangle_area(b, c, point);
+	float	area = triangle_area(a, b, c);
+	float	areaABP = triangle_area(a, b, point);
+	float	areaACP = triangle_area(a, c, point);
+	float	areaBCP = triangle_area(b, c, point);
+
 	if (area == 0)
 	{
 		std::cout << "The three points makes a line.\n";
@@ -37,11 +40,7 @@ bool	bsp(Point const a, Point const b, Point const c, Point const point)
 	}
 	if ( areaABP * areaACP * areaBCP == 0)
 		return (false);
-	if (areaABP > area)
-		return (false);
-	if (areaACP > area)
-		return (false);
-	if (areaBCP > area)
-		return (false);
-	return (true);
+	if (areaABP + areaACP + areaBCP == area)
+		return (true);
+	return (false);
 }
