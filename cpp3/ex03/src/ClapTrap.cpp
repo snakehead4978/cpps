@@ -3,31 +3,35 @@
 /*                                                        :::      ::::::::   */
 /*   ClapTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: snek <snek@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: jla-chon <jla-chon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/03 22:46:18 by snek              #+#    #+#             */
-/*   Updated: 2025/03/03 23:45:43 by snek             ###   ########.fr       */
+/*   Updated: 2025/03/04 18:30:57 by jla-chon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
 
+ClapTrap::ClapTrap(void) : __name("No Name"), __hp(10), __mana(10), __str(0) { std::cout << "Claptrap Default constructor for " << this->getName() <<  " called\n"; }
 
-ClapTrap::ClapTrap(std::string name) : __name(name), __hp(10), __mana(10), __str(0) { std::cout << "Default constructor called\n"; }
+ClapTrap::ClapTrap(std::string name) : __name(name), __hp(10), __mana(10), __str(0) { std::cout << "Claptrap constructor for " << this->getName() <<  " called\n"; }
 
-ClapTrap::~ClapTrap() { std::cout << "Destructor called\n"; }
+ClapTrap::ClapTrap(std::string name, int hp, int mana, int str) : __name(name), __hp(hp), __mana(mana), __str(str) { std::cout << "Claptrap overloaded constr for " << this->getName() <<  " called\n"; }
+
+ClapTrap::~ClapTrap() { std::cout << "Claptrap Destructor for " << this->getName() <<  " called\n"; }
 
 ClapTrap::ClapTrap(const ClapTrap& t)
 {
-	std::cout << "Copy constructor called\n";
 	*this = t;
+	std::cout << "Claptrap Copy constructor for " << this->getName() <<  " called\n";
 }
 
 ClapTrap&	 ClapTrap::operator=(const ClapTrap& t)
 {
-	std::cout << "Copy assignment operator called\n";
+	std::cout << "Claptrap Copy assignment operator for " << this->getName() <<  " called\n";
 	if (this != &t)
 	{
+		this->__name = t.__name;
 		this->__hp = t.__hp;
 		this->__mana = t.__mana;
 		this->__str = t.__str;
@@ -52,7 +56,7 @@ void	ClapTrap::attack(const std::string& target)
 		return ;
 	this->__mana--;
 	std::cout << "ClapTrap " << this->__name;
-	std::cout << "attacks " << target;
+	std::cout << " attacks " << target;
 	std::cout << ", causing " << this->__str;
 	std::cout << " points of damage!\n";
 }
@@ -66,7 +70,7 @@ void	ClapTrap::takeDamage(unsigned int amount)
 		return ;
 	}
 	this->__hp -= amount;
-	std::cout << "ClapTrap" << this->__name << "takes " << amount << " damage ";
+	std::cout << "ClapTrap " << this->__name << " takes " << amount << " damage ";
 	if (this->__hp <= 0)
 		std::cout << "and is ready for decommission!";
 	std::cout << std::endl;
@@ -78,6 +82,22 @@ void	ClapTrap::beRepaired(unsigned int amount)
 		return ;
 	this->__mana--;
 	std::cout << "ClapTrap " << this->__name;
-	std::cout << "heals itself for " << amount << " health.\n";
+	std::cout << " heals itself for " << amount << " health.\n";
 	this->__hp += amount;
 }
+
+std::string	ClapTrap::getName(void) const { return this->__name; }
+
+int	ClapTrap::getHp(void) const { return this->__hp; }
+
+int	ClapTrap::getMana(void) const { return this->__mana; }
+
+int	ClapTrap::getStr(void) const { return this->__str; }
+
+void	ClapTrap::setName(std::string name) { this->__name = name; }
+
+void	ClapTrap::setHp(int hp) { this->__hp = hp; }
+
+void	ClapTrap::setMana(int mana) { this->__mana = mana; }
+
+void	ClapTrap::setStr(int str) { this->__str = str; }

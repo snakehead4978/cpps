@@ -12,20 +12,21 @@
 
 #include "ScavTrap.hpp"
 
-ScavTrap::ScavTrap(void) : ClapTrap("No Name", 100, 50, 20) { std::cout << "Scav Default constructor called\n"; }
+ScavTrap::ScavTrap(void) : ClapTrap("No Name", 100, 50, 20) { std::cout << "Scav Default constructor for No Name called\n"; }
 
-ScavTrap::ScavTrap(std::string name) : ClapTrap(name, 100, 50, 20) { std::cout << "Scav Default constructor called\n"; }
+ScavTrap::ScavTrap(std::string name) : ClapTrap(name, 100, 50, 20) { std::cout << "Scav Default constructor for " << this->getName() << " called\n"; }
 
-ScavTrap::~ScavTrap() { std::cout << "Scav Destructor called\n"; }
+ScavTrap::~ScavTrap() { std::cout << "Scav Destructor for " << this->getName() << " called\n"; }
 
 ScavTrap::ScavTrap(const ScavTrap& t): ClapTrap(t)
 {
-	std::cout << "Scav Copy constructor called\n";
+	*this = t;
+	std::cout << "Scav Copy constructor for " << this->getName() << " called\n";
 }
 
 ScavTrap&	 ScavTrap::operator=(const ScavTrap& t)
 {
-	std::cout << "Scav Copy assignment operator called\n";
+	std::cout << "Scav Copy assignment operator for " << this->getName() << " called\n";
 	if (this != &t)
 	{
 		this->setHp(t.getHp());
@@ -52,7 +53,7 @@ void	ScavTrap::attack(const std::string& target)
 		return ;
 	this->setMana(this->getMana() - 1);
 	std::cout << "Scavtrap " << this->getName();
-	std::cout << " attacks " << target;
+	std::cout << " scavenges " << target;
 	std::cout << ", causing " << this->getStr();
 	std::cout << " points of damage!\n";
 }
@@ -84,5 +85,5 @@ void	ScavTrap::beRepaired(unsigned int amount)
 
 void	ScavTrap::guardGate(void)
 {
-	std::cout << "Scavtrap " << this->getName() << " is now in Gate keeper mode." << std::endl;
+	std::cout << "Scavtrap " << this->getName() << " is now in Gate keeper mode.\n" << std::endl;
 }

@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "ScavTrap.hpp"
+#include "FragTrap.hpp"
 
 int	main()
 {
@@ -20,10 +21,18 @@ int	main()
 	// clap2.attack("qtn");
 	ScavTrap	scav1("st1");
 	scav1.attack("br1");
-	ScavTrap	scav2(scav1);
-	scav2.takeDamage(50);
-	scav2.setName("st2");
-	std::cout << scav2.getHp() << "health \n";
-	scav2.guardGate();
+	// ScavTrap	scav2(scav1);
+	// scav2.takeDamage(50);
+	// scav2.setName("st2");
+	// std::cout << scav2.getHp() << "health \n";
+	// scav2.guardGate();
+	FragTrap	frag1("fr1");
+	frag1.takeDamage(30);
+	std::cout << frag1.getHp() << std::endl;
+	frag1.highFivesGuys();
+	frag1.takeDamage(80);
+	frag1.takeDamage(15);
+	std::cout << frag1.getHp() << std::endl;
+	frag1.beRepaired(200);
 	return (0);
 }
