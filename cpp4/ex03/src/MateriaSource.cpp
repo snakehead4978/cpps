@@ -1,36 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Character.cpp                                      :+:      :+:    :+:   */
+/*   MateriaSource.cpp                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jeremie <jeremie@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/27 20:26:02 by jeremie           #+#    #+#             */
-/*   Updated: 2025/05/27 21:43:34 by jeremie          ###   ########.fr       */
+/*   Created: 2025/05/27 21:14:32 by jeremie           #+#    #+#             */
+/*   Updated: 2025/05/27 21:40:04 by jeremie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Character.hpp"
+#include "MateriaSource.hpp"
 
-Character::Character() : __name("tempName")
+MateriaSource::MateriaSource()
 {
 	for (int i = 0; i < 4; i++)
 		__inventory[i] = 0;
 }
 
-Character::Character(std::string name) : __name(name)
-{ 
-	for (int i = 0; i < 4; i++)
-		__inventory[i] = 0;
-}
-
-Character::~Character()
+MateriaSource::~MateriaSource()
 {
-	for (int i = 0; i < 4; i++)
+	for (int i = 0; i < 4; i ++)
 		delete __inventory[i];
 }
 
-Character::Character(const Character& t) : __name(t.__name)
+MateriaSource::MateriaSource(const MateriaSource& t)
 {
 	for (int i = 0; i < 4; i++)
 		delete __inventory[i];
@@ -43,11 +37,10 @@ Character::Character(const Character& t) : __name(t.__name)
 	}
 }
 
-Character&	 Character::operator=(const Character& t)
+MateriaSource&	 MateriaSource::operator=(const MateriaSource& t)
 {
 	if (this != &t)
 	{
-		__name = t.__name;
 		for (int i = 0; i < 4; i++)
 			delete __inventory[i];
 		for (int i = 0; i < 4; i++)
@@ -58,17 +51,13 @@ Character&	 Character::operator=(const Character& t)
 				__inventory[i] = 0;
 		}
 	}
+
 	return (*this);
 }
 
-std::string	const&	Character::getName() const
+void	MateriaSource::learnMateria(AMateria *spell)
 {
-	return (__name);
-}
-
-void	Character::equip(AMateria *m)
-{
-	if (!m)
+	if (!spell)
 	{
 		std::cout << "Not a spell!\n";
 		return ;
@@ -81,31 +70,19 @@ void	Character::equip(AMateria *m)
 		std::cout << "All spell slots are filled!\n";
 		return ;
 	}
-	__inventory[i] = m;
+	__inventory[i] = spell->clone();
 }
 
-void	Character::unequip(int idx)
+AMateria	*MateriaSource::createMateria(std::string const &type)
 {
-	if (idx < 0 || idx >= 4)
+	for (int i = 0; i < 4; i++)
 	{
-		std::cout << "Invalid slot number.\n";
-		return;
+		if (__inventory[i])
+		{
+			if (__inventory[i]->getType() == type)
+				return (__inventory[i]->clone());
+		}
 	}
-	if (__inventory[idx])
-		__inventory[idx] = 0;
-	else
-		std::cout << "No spells learnt in that slot.\n";
-}
-
-void	Character::use(int idx, ICharacter &target)
-{
-	if (idx < 0 || idx >= 4)
-	{
-		std::cout << "Invalid slot number.\n";
-		return;
-	}
-	if (!__inventory[idx])
-		std::cout << "No spells learnt in that slot.\n";
-	else
-		__inventory[idx]->use(target);
+	std::cout << "Spell with name " << type << " not found.\n";
+	return (0);
 }

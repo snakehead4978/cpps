@@ -6,12 +6,15 @@
 /*   By: jeremie <jeremie@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/27 19:47:05 by jeremie           #+#    #+#             */
-/*   Updated: 2025/05/27 19:48:10 by jeremie          ###   ########.fr       */
+/*   Updated: 2025/05/27 21:43:28 by jeremie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
-#include ""
+#include "Cure.hpp"
+#include "Ice.hpp"
+#include "MateriaSource.hpp"
+#include "Character.hpp"
 
 int	main()
 {

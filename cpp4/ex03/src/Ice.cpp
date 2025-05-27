@@ -6,13 +6,13 @@
 /*   By: jeremie <jeremie@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/27 20:07:30 by jeremie           #+#    #+#             */
-/*   Updated: 2025/05/27 20:11:13 by jeremie          ###   ########.fr       */
+/*   Updated: 2025/05/27 21:57:42 by jeremie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Ice.hpp"
 
-Ice::Ice() : AMateria("Ice") {}
+Ice::Ice() : AMateria("ice") {}
 
 Ice::~Ice() {}
 

@@ -6,7 +6,7 @@
 /*   By: jeremie <jeremie@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/27 19:43:57 by jeremie           #+#    #+#             */
-/*   Updated: 2025/05/27 19:53:59 by jeremie          ###   ########.fr       */
+/*   Updated: 2025/05/27 21:55:40 by jeremie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,4 +33,4 @@ std::string const&	AMateria::getType() const
 	return (__type);
 }
 
-void	AMateria::use(ICharacter &target) {}
+void	AMateria::use(ICharacter &target) { std::cout << "Invalid Spell trying to be cast on " << target.getName() << ", cannot cast nothing! (Overload 'use' function in AMateria children)\n"; }
