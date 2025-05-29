@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: snek <snek@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: jla-chon <jla-chon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/28 09:31:23 by snek              #+#    #+#             */
-/*   Updated: 2025/02/28 10:43:12 by snek             ###   ########.fr       */
+/*   Updated: 2025/05/29 17:08:26 by jla-chon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,4 +34,5 @@ int	main()
 		club.setType("some other type of club");
 		jim.attack();
 	}
+	return (0);
 }

@@ -1,12 +1,12 @@
 #include "DiamondTrap.hpp"
 
-DiamondTrap::DiamondTrap() : ClapTrap("No Name_clap_name", 100, 50, 30)
+DiamondTrap::DiamondTrap() : FragTrap("No Name_clap_name", 2), ScavTrap("No Name_clap_name", 2)
 {
 	this->__name = "No Name";
 	std::cout << "Default Diamond constructor for No Name called\n";
 }
 
-DiamondTrap::DiamondTrap(std::string name) : ClapTrap(name + "_clap_name", 100, 50, 30)
+DiamondTrap::DiamondTrap(std::string name) : FragTrap("No Name_clap_name", 2), ScavTrap("No Name_clap_name", 2)
 {
 	this->__name = name;
 	std::cout << "Diamond constructor for " << this->__name << " called\n";
@@ -14,10 +14,14 @@ DiamondTrap::DiamondTrap(std::string name) : ClapTrap(name + "_clap_name", 100, 
 
 DiamondTrap::~DiamondTrap() { std::cout << "Diamond Destructor for " << this->__name << " called\n"; }
 
-DiamondTrap::DiamondTrap(const DiamondTrap& t) : ClapTrap(t), FragTrap(t), ScavTrap(t)
+DiamondTrap::DiamondTrap(const DiamondTrap& t) : FragTrap(t), ScavTrap(t)
 {
-	*this = t;
-	std::cout << "Diamond Copy constructor for " << this->__name << " called\n";
+	__name = t.__name;
+	__hp = t.__hp;
+	__mana = t.__mana;
+	__str = t.__str;
+	ClapTrap::__name = t.ClapTrap::__name;
+	std::cout << "Diamond Copy constructor for " << __name << " called\n";
 }
 
 DiamondTrap&	 DiamondTrap::operator=(const DiamondTrap& t)
@@ -28,7 +32,7 @@ DiamondTrap&	 DiamondTrap::operator=(const DiamondTrap& t)
 		this->setHp(t.getHp());
 		this->setMana(t.getMana());
 		this->setStr(t.getStr());
-		ClapTrap::setName(this->__name + "_clap_name");
+		ClapTrap::__name = __name + "_clap_name";
 	}
 	std::cout << "Diamond Copy assignment operator for " << this->__name << " called\n";
 	return (*this);
@@ -46,16 +50,16 @@ static bool	status(int hp, int mana, std::string name)
 	return (true);
 }
 
-void	DiamondTrap::attack(const std::string& target)
-{
-	if (status(this->getHp(), this->getMana(), this->getName()))
-		return ;
-	this->setMana(this->getMana() - 1);
-	std::cout << "DiamondTrap " << this->getName();
-	std::cout << " scavenges " << target;
-	std::cout << ", causing " << this->getStr();
-	std::cout << " points of damage!\n";
-}
+// void	DiamondTrap::attack(const std::string& target)
+// {
+// 	if (status(this->getHp(), this->getMana(), this->getName()))
+// 		return ;
+// 	this->setMana(this->getMana() - 1);
+// 	std::cout << "DiamondTrap " << this->getName();
+// 	std::cout << " scavenges " << target;
+// 	std::cout << ", causing " << this->getStr();
+// 	std::cout << " points of damage!\n";
+// }
 
 void	DiamondTrap::takeDamage(unsigned int amount)
 {

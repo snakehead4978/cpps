@@ -6,7 +6,7 @@
 /*   By: jla-chon <jla-chon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 17:20:33 by jla-chon          #+#    #+#             */
-/*   Updated: 2025/03/04 18:28:51 by jla-chon         ###   ########.fr       */
+/*   Updated: 2025/05/29 17:48:06 by jla-chon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@
 
 class ScavTrap : virtual public ClapTrap
 {
+	protected:
+		ScavTrap(std::string, int);
 	public:
 		ScavTrap(void);
 		ScavTrap(std::string name);

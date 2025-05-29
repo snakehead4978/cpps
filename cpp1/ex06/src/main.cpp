@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: snek <snek@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: jla-chon <jla-chon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/28 20:45:19 by snek              #+#    #+#             */
-/*   Updated: 2025/03/01 23:19:00 by snek             ###   ########.fr       */
+/*   Updated: 2025/05/29 20:25:36 by jla-chon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,12 +37,12 @@ static int	coolMain()
 
 	do
 	{
-		std::cout << "Awaiting command.[debug, info, warning, error, exit]\n";
+		std::cout << "Awaiting command.[DEBUG, INFO, WARNING, ERROR, EXIT]\n";
 		str = getString();
 		std::cout << std::endl;
 		harlito.filter(str);
 	}
-	while (str != "exit");
+	while (str != "EXIT");
 	return (0);
 }
 

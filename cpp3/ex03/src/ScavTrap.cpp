@@ -6,7 +6,7 @@
 /*   By: jla-chon <jla-chon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 18:28:55 by jla-chon          #+#    #+#             */
-/*   Updated: 2025/03/04 18:32:53 by jla-chon         ###   ########.fr       */
+/*   Updated: 2025/05/29 17:48:55 by jla-chon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,15 @@ ScavTrap::ScavTrap(const ScavTrap& t): ClapTrap(t)
 	*this = t;
 	std::cout << "Scav Copy constructor for " << this->getName() << " called\n";
 }
+
+ScavTrap::ScavTrap(std::string str, int x) : ClapTrap(str)
+{
+	if (x != 2)
+		return ;
+	__mana = 50;
+	std::cout << "Scav/Diamond constructor for " << str << " called\n";
+}
+
 
 ScavTrap&	 ScavTrap::operator=(const ScavTrap& t)
 {

@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   megaphone.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: snek <snek@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: jla-chon <jla-chon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 18:00:43 by snek              #+#    #+#             */
-/*   Updated: 2025/02/10 18:00:44 by snek             ###   ########.fr       */
+/*   Updated: 2025/05/28 18:32:17 by jla-chon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MEGAPHONE
-# define MEGAPHONE
+#ifndef MEGAPHONE_H
+# define MEGAPHONE_H
 # include <iostream>
 # include <cctype>
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Harl.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: snek <snek@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: jla-chon <jla-chon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/28 22:35:16 by snek              #+#    #+#             */
-/*   Updated: 2025/03/01 23:18:25 by snek             ###   ########.fr       */
+/*   Updated: 2025/05/29 20:25:08 by jla-chon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,9 @@ Harl::~Harl() {}
 void	Harl::complain(std::string level)
 {
 	void	(Harl::*ptrs[4])() = {&Harl::debug, &Harl::info, &Harl::warning, &Harl::error};
-	std::string	complaints[4] = {"debug", "info", "warning", "error"};
+	std::string	complaints[4] = {"DEBUG", "INFO", "WARNING", "ERROR"};
 
-	if (level == "exit")
+	if (level == "EXIT")
 		return ;
 	for (int i = 0; i < 4; i++)
 	{

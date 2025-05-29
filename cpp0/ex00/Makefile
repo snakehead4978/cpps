@@ -2,27 +2,30 @@ NAME = megaphone
 
 CC = c++
 
-CFLAG = -Wall -Wextra -Werror
+CFLAG = -Wall -Wextra -Werror -g -MMD
 CFLAG += -std=c++98
 
 SRC = megaphone.cpp
 
 OBJ = $(SRC:.cpp=.o)
 
-%.o : %.c
+DEP = $(SRC:.cpp=.d)
+
+%.o: %.cpp
 	$(CC) $(CFLAG) -c $< -o $@
 
-$(NAME) : $(OBJ)
+$(NAME): $(OBJ)
 	$(CC) $(CFLAG) $^ -o $@
+-include $(DEP)
 
-all : $(NAME)
+all: $(NAME)
 
-clean :
-	rm -rf $(OBJ)
+clean:
+	rm -rf $(OBJ) $(DEP)
 
-fclean : clean
+fclean: clean
 	rm -rf $(NAME)
 
-re : fclean all
+re: fclean all
 
-.PHONY : clean fclean re all
+.PHONY: clean fclean re all

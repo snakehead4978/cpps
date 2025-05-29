@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Zombie.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: snek <snek@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: jla-chon <jla-chon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 21:41:51 by snek              #+#    #+#             */
-/*   Updated: 2025/02/27 22:33:33 by snek             ###   ########.fr       */
+/*   Updated: 2025/05/29 20:28:03 by jla-chon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 Zombie::Zombie(std::string name) { _name = name; }
 
-Zombie::~Zombie() { std::cout << "*BANG* Headshot!" << std::endl; }
+Zombie::~Zombie() { std::cout << _name << " *BANG* Headshot!" << std::endl; }
 
-Zombie::Zombie() {}
+Zombie::Zombie() : _name("default name") {}
 
 void	Zombie::announce() { std::cout << _name << ": BraiiiiiiinnnzzzZ..." << std::endl; }
 

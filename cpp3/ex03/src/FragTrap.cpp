@@ -6,6 +6,15 @@ FragTrap::FragTrap(std::string name) : ClapTrap(name, 100, 100, 30) { std::cout 
 
 FragTrap::~FragTrap() { std::cout << "Frag Destructor for " << this->getName() << " called\n"; }
 
+FragTrap::FragTrap(std::string str, int x) : ClapTrap(str)
+{
+	if (x != 2)
+		return ;
+	__hp = 100;
+	__str = 30;
+	std::cout << "Frag/Diamond constructor for " << str << " called\n";
+}
+
 FragTrap::FragTrap(const FragTrap& t): ClapTrap(t)
 {
 	std::cout << "Frag Copy constructor for " << t.getName() << " called\n";

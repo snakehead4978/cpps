@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: snek <snek@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: jla-chon <jla-chon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/28 11:30:11 by snek              #+#    #+#             */
-/*   Updated: 2025/02/28 20:28:01 by snek             ###   ########.fr       */
+/*   Updated: 2025/05/29 20:28:52 by jla-chon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,8 @@ int	main(int ac, char**av)
 	std::string		toFind(av[2]);
 	std::string		toInsert(av[3]);
 
+	if (toFind == "")
+		return (1);
 	std::ifstream	ReadFile(filename.c_str());
 	if (checkFail(ReadFile.fail()))
 		return (1);
