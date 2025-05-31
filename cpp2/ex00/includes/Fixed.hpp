@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Fixed.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: snek <snek@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: jeremie <jeremie@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/02 00:37:20 by snek              #+#    #+#             */
-/*   Updated: 2025/03/02 16:41:10 by snek             ###   ########.fr       */
+/*   Updated: 2025/05/30 17:29:28 by jeremie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ class Fixed
 {
 	private:
 		int	__value;
-		static int	const __eight = 8;
+		static int	const __eight;
 	public:
 		Fixed();
 		Fixed(const Fixed& t);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Point.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jla-chon <jla-chon@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jeremie <jeremie@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/03 18:47:22 by snek              #+#    #+#             */
-/*   Updated: 2025/03/04 15:53:06 by jla-chon         ###   ########.fr       */
+/*   Updated: 2025/05/31 03:06:26 by jeremie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ Point::Point(const float p1, const float p2) : x(p1), y(p2) {}
 
 Point::~Point() {}
 
-Point::Point(const Point& t) : x(t.getX()), y(t.getY()) { *this = t; }
+Point::Point(const Point& t) : x(t.getX()), y(t.getY()) {}
 
 Point&	 Point::operator=(const Point& t)
 {

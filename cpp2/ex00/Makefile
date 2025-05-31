@@ -1,6 +1,5 @@
 NAME = a.out
 
-
 CC = c++
 
 CFLAG = -Wall -Wextra -Werror -g3 -MMD -MP

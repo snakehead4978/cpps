@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Fixed.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: snek <snek@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: jeremie <jeremie@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/02 01:27:34 by snek              #+#    #+#             */
-/*   Updated: 2025/03/03 18:37:10 by snek             ###   ########.fr       */
+/*   Updated: 2025/05/31 02:14:39 by jeremie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,12 @@ Fixed::Fixed() { __value = 0; }
 
 Fixed::~Fixed() {}
 
-Fixed::Fixed(const Fixed& t) { *this = t; }
+Fixed::Fixed(const Fixed& t) : __value(t.__value) { /* *this = t; */ }
 
 Fixed&	 Fixed::operator=(const Fixed& t)
 {
-	this->__value = t.getRawBits();
+	if (this != &t)
+		this->__value = t.getRawBits();
 	return (*this);
 }
 

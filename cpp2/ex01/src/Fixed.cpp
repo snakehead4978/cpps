@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Fixed.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: snek <snek@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: jeremie <jeremie@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/02 01:27:34 by snek              #+#    #+#             */
-/*   Updated: 2025/03/03 17:30:54 by snek             ###   ########.fr       */
+/*   Updated: 2025/05/31 01:39:25 by jeremie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,16 @@ Fixed::~Fixed() { std::cout << "Destructor called\n"; }
 Fixed::Fixed(const Fixed& t)
 {
 	std::cout << "Copy constructor called\n";
-	*this = t;
+	// like subject
+	// *this = t;
+	__value = t.getRawBits();
 }
 
 Fixed&	 Fixed::operator=(const Fixed& t)
 {
 	std::cout << "Copy assignment operator called\n";
-	this->__value = t.getRawBits();
+	if (this != &t)
+		this->__value = t.getRawBits();
 	return (*this);
 }
 
