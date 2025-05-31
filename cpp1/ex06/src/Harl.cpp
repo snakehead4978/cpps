@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Harl.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jla-chon <jla-chon@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jeremie <jeremie@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/28 22:35:16 by snek              #+#    #+#             */
-/*   Updated: 2025/05/29 20:26:10 by jla-chon         ###   ########.fr       */
+/*   Updated: 2025/05/31 16:17:23 by jeremie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,15 +57,19 @@ void	Harl::filter(std::string level)
 	{
 		case 0:
 			debug();
+			std::cout << std::endl;
 			__attribute__((fallthrough));
 		case 1:
 			info();
+			std::cout << std::endl;
 			__attribute__((fallthrough));
 		case 2:
 			warning();
+			std::cout << std::endl;
 			__attribute__((fallthrough));
 		case 3:
 			error();
+			std::cout << std::endl;
 			break ;
 		default:
 			std::cout << "[ Probably complaining about insignificant problems ]\n";

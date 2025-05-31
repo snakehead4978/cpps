@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jla-chon <jla-chon@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jeremie <jeremie@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/28 11:30:11 by snek              #+#    #+#             */
-/*   Updated: 2025/05/29 20:28:52 by jla-chon         ###   ########.fr       */
+/*   Updated: 2025/05/31 16:10:54 by jeremie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,10 @@ int	main(int ac, char**av)
 	std::string		toInsert(av[3]);
 
 	if (toFind == "")
+	{
+		std::cout << "Cannot search for nothing\n";
 		return (1);
+	}
 	std::ifstream	ReadFile(filename.c_str());
 	if (checkFail(ReadFile.fail()))
 		return (1);
