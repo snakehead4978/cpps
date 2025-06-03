@@ -1,20 +1,26 @@
 #include "DiamondTrap.hpp"
 
-DiamondTrap::DiamondTrap() : FragTrap("No Name_clap_name", 2), ScavTrap("No Name_clap_name", 2)
+DiamondTrap::DiamondTrap() : ClapTrap("No Name_clap_name"), FragTrap("No Name"), ScavTrap("No Name")
 {
 	this->__name = "No Name";
+	setHpFrag();
+	setManaScav();
+	setStrFrag();
 	std::cout << "Default Diamond constructor for No Name called\n";
 }
 
-DiamondTrap::DiamondTrap(std::string name) : FragTrap("No Name_clap_name", 2), ScavTrap("No Name_clap_name", 2)
+DiamondTrap::DiamondTrap(std::string name) : ClapTrap(name + "_clap_name"), FragTrap(name), ScavTrap(name)
 {
 	this->__name = name;
-	std::cout << "Diamond constructor for " << this->__name << " called\n";
+	setHpFrag();
+	setManaScav();
+	setStrFrag();
+	std::cout << "Diamond overloaded constructor for " << this->__name << " called\n";
 }
 
 DiamondTrap::~DiamondTrap() { std::cout << "Diamond Destructor for " << this->__name << " called\n"; }
 
-DiamondTrap::DiamondTrap(const DiamondTrap& t) : FragTrap(t), ScavTrap(t)
+DiamondTrap::DiamondTrap(const DiamondTrap& t) : ClapTrap(t.ClapTrap::__name), FragTrap(t.__name), ScavTrap(t.__name)
 {
 	__name = t.__name;
 	__hp = t.__hp;
@@ -88,5 +94,19 @@ void	DiamondTrap::beRepaired(unsigned int amount)
 
 void	DiamondTrap::whoAmI()
 {
-	std::cout << "Am I " << this->__name << " or " << ClapTrap::getName() << "? Such is the question.\n";
+	if (this->getHp() <= 0)
+		std::cout << "DiamondTrap " << this->getName() << " is dead\n";
+	else
+		std::cout << "Am I " << this->__name << " or " << this->ClapTrap::__name << "? Such is the question.\n";
+}
+
+void	DiamondTrap::setName(std::string name)
+{
+	this->__name = name;
+	ClapTrap::__name = name + "_clap_name";
+}
+
+std::string	DiamondTrap::getName() const
+{
+	return this->__name;
 }

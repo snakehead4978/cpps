@@ -6,7 +6,7 @@
 /*   By: jla-chon <jla-chon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/03 22:46:18 by snek              #+#    #+#             */
-/*   Updated: 2025/03/04 18:30:57 by jla-chon         ###   ########.fr       */
+/*   Updated: 2025/06/01 18:22:38 by jla-chon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 ClapTrap::ClapTrap(void) : __name("No Name"), __hp(10), __mana(10), __str(0) { std::cout << "Claptrap Default constructor called\n"; }
 
-ClapTrap::ClapTrap(std::string name) : __name(name), __hp(10), __mana(10), __str(0) { std::cout << "Claptrap Default constructor called\n"; }
+ClapTrap::ClapTrap(std::string name) : __name(name), __hp(10), __mana(10), __str(0) { std::cout << "Claptrap overloaded constructor called\n"; }
 
 ClapTrap::ClapTrap(std::string name, int hp, int mana, int str) : __name(name), __hp(hp), __mana(mana), __str(str) { std::cout << "Claptrap overloaded constr called\n"; }
 
@@ -23,7 +23,11 @@ ClapTrap::~ClapTrap() { std::cout << "Claptrap Destructor called\n"; }
 ClapTrap::ClapTrap(const ClapTrap& t)
 {
 	std::cout << "Claptrap Copy constructor called\n";
-	*this = t;
+	__name = t.__name;
+	__hp = t.__hp;
+	__mana = t.__mana;
+	__str = t.__str;
+	// *this = t;
 }
 
 ClapTrap&	 ClapTrap::operator=(const ClapTrap& t)

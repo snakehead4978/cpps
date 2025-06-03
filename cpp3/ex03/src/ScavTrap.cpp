@@ -6,7 +6,7 @@
 /*   By: jla-chon <jla-chon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 18:28:55 by jla-chon          #+#    #+#             */
-/*   Updated: 2025/05/29 17:48:55 by jla-chon         ###   ########.fr       */
+/*   Updated: 2025/06/02 17:05:32 by jla-chon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,24 +14,14 @@
 
 ScavTrap::ScavTrap(void) : ClapTrap("No Name", 100, 50, 20) { std::cout << "Scav Default constructor for No Name called\n"; }
 
-ScavTrap::ScavTrap(std::string name) : ClapTrap(name, 100, 50, 20) { std::cout << "Scav Default constructor for " << this->getName() << " called\n"; }
+ScavTrap::ScavTrap(std::string name) : ClapTrap(name, 100, 50, 20) { std::cout << "Scav overloaded constructor for " << this->getName() << " called\n"; }
 
 ScavTrap::~ScavTrap() { std::cout << "Scav Destructor for " << this->getName() << " called\n"; }
 
-ScavTrap::ScavTrap(const ScavTrap& t): ClapTrap(t)
+ScavTrap::ScavTrap(const ScavTrap& t) : ClapTrap(t.getName(), t.getHp(), t.getMana(), t.getStr())
 {
-	*this = t;
 	std::cout << "Scav Copy constructor for " << this->getName() << " called\n";
 }
-
-ScavTrap::ScavTrap(std::string str, int x) : ClapTrap(str)
-{
-	if (x != 2)
-		return ;
-	__mana = 50;
-	std::cout << "Scav/Diamond constructor for " << str << " called\n";
-}
-
 
 ScavTrap&	 ScavTrap::operator=(const ScavTrap& t)
 {
@@ -94,5 +84,14 @@ void	ScavTrap::beRepaired(unsigned int amount)
 
 void	ScavTrap::guardGate(void)
 {
-	std::cout << "Scavtrap " << this->getName() << " is now in Gate keeper mode.\n" << std::endl;
+	if (this->getHp() <= 0)
+		std::cout << "Scavtrap " << this->getName() << " is dead\n";
+	else
+		std::cout << "Scavtrap " << this->getName() << " is now in Gate keeper mode.\n" << std::endl;
 }
+
+void	ScavTrap::setManaScav()
+{
+	this->setMana(50);
+}
+

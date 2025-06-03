@@ -2,23 +2,13 @@
 
 FragTrap::FragTrap() : ClapTrap("No Name", 100, 100, 30) { std::cout << "Default Frag constructor for No Name called\n"; }
 
-FragTrap::FragTrap(std::string name) : ClapTrap(name, 100, 100, 30) { std::cout << "Frag constructor for " << name << " called\n"; }
+FragTrap::FragTrap(std::string name) : ClapTrap(name, 100, 100, 30) { std::cout << "Frag overloaded constructor for " << name << " called\n"; }
 
 FragTrap::~FragTrap() { std::cout << "Frag Destructor for " << this->getName() << " called\n"; }
 
-FragTrap::FragTrap(std::string str, int x) : ClapTrap(str)
-{
-	if (x != 2)
-		return ;
-	__hp = 100;
-	__str = 30;
-	std::cout << "Frag/Diamond constructor for " << str << " called\n";
-}
-
-FragTrap::FragTrap(const FragTrap& t): ClapTrap(t)
+FragTrap::FragTrap(const FragTrap& t): ClapTrap(t.getName(), t.getHp(), t.getMana(), t.getStr())
 {
 	std::cout << "Frag Copy constructor for " << t.getName() << " called\n";
-	*this = t;
 }
 
 FragTrap&	 FragTrap::operator=(const FragTrap& t)
@@ -83,5 +73,18 @@ void	FragTrap::beRepaired(unsigned int amount)
 
 void	FragTrap::highFivesGuys()
 {
-	std::cout << "FragTrap " << this->getName() << " highfives itself!\n";
+	if (this->getHp() <= 0)
+		std::cout << "FragTrap " << this->getName() << " is dead\n";
+	else
+		std::cout << "FragTrap " << this->getName() << " highfives itself!\n";
+}
+
+void	FragTrap::setHpFrag()
+{
+	this->setHp(100);
+}
+
+void	FragTrap::setStrFrag()
+{
+	this->setStr(30);
 }

@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   WrongCat.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jeremie <jeremie@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jla-chon <jla-chon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/27 17:52:20 by jeremie           #+#    #+#             */
-/*   Updated: 2025/05/27 18:05:52 by jeremie          ###   ########.fr       */
+/*   Updated: 2025/06/03 11:05:46 by jla-chon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "WrongCat.hpp"
 
-WrongCat::WrongCat() { std::cout << "WrongCat Default constructor called\n"; }
+WrongCat::WrongCat() : WrongAnimal("Cat") { std::cout << "WrongCat Default constructor called\n"; }
 
 WrongCat::~WrongCat() { std::cout << "WrongCat Destructor called\n"; }
 

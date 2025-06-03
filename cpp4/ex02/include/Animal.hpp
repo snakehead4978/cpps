@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Animal.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jeremie <jeremie@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jla-chon <jla-chon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/22 22:06:09 by jeremie           #+#    #+#             */
-/*   Updated: 2025/05/27 19:28:57 by jeremie          ###   ########.fr       */
+/*   Updated: 2025/06/03 11:38:55 by jla-chon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ class Animal
 		Animal&	operator=(const Animal& t);
 		virtual ~Animal();
 		virtual void	makeSound() const = 0;
-		std::string	getType() const;
+		const std::string	&getType() const;
 		void	setType(std::string type);
 };
 

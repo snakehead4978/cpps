@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Cat.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jeremie <jeremie@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jla-chon <jla-chon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/22 22:25:42 by jeremie           #+#    #+#             */
-/*   Updated: 2025/05/27 19:15:02 by jeremie          ###   ########.fr       */
+/*   Updated: 2025/06/03 11:35:57 by jla-chon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,8 @@ Cat&	 Cat::operator=(const Cat& t)
 {
 	if (this != &t)
 	{
-		__brain = t.__brain;
+		delete __brain;
+		__brain = new Brain(*t.__brain);
 		this->__type = t.__type;
 	}
 	std::cout << "Cat Copy assignment operator called\n";

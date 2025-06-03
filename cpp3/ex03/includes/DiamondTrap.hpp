@@ -19,6 +19,9 @@ class DiamondTrap : public FragTrap, public ScavTrap
 		void	takeDamage(unsigned int amount);
 		void	beRepaired(unsigned int amount);
 		void	whoAmI();
+		std::string	getName() const;
+		void	setName(std::string name);
+
 };
 
 #endif

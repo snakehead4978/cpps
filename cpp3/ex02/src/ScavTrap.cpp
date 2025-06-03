@@ -6,7 +6,7 @@
 /*   By: jla-chon <jla-chon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 18:28:55 by jla-chon          #+#    #+#             */
-/*   Updated: 2025/03/04 18:32:53 by jla-chon         ###   ########.fr       */
+/*   Updated: 2025/06/02 16:33:26 by jla-chon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ ScavTrap::ScavTrap(std::string name) : ClapTrap(name, 100, 50, 20) { std::cout <
 
 ScavTrap::~ScavTrap() { std::cout << "Scav Destructor for " << this->getName() << " called\n"; }
 
-ScavTrap::ScavTrap(const ScavTrap& t): ClapTrap(t)
+ScavTrap::ScavTrap(const ScavTrap& t): ClapTrap(t.getName(), t.getHp(), t.getMana(), t.getStr())
 {
 	std::cout << "Scav Copy constructor for " << this->getName() << " called\n";
 }
@@ -28,6 +28,7 @@ ScavTrap&	 ScavTrap::operator=(const ScavTrap& t)
 	std::cout << "Scav Copy assignment operator for " << this->getName() << " called\n";
 	if (this != &t)
 	{
+		this->setName(t.getName());
 		this->setHp(t.getHp());
 		this->setMana(t.getMana());
 		this->setStr(t.getStr());
@@ -66,9 +67,9 @@ void	ScavTrap::takeDamage(unsigned int amount)
 		return ;
 	}
 	this->setHp(this->getHp() - amount);
-	std::cout << "Scavtrap " << this->getName() << " takes " << amount << " damage ";
+	std::cout << "Scavtrap " << this->getName() << " takes " << amount << " damage";
 	if (this->getHp() <= 0)
-		std::cout << "and is ready for decommission!";
+		std::cout << " and is ready for decommission!";
 	std::cout << std::endl;
 }
 
@@ -84,5 +85,8 @@ void	ScavTrap::beRepaired(unsigned int amount)
 
 void	ScavTrap::guardGate(void)
 {
-	std::cout << "Scavtrap " << this->getName() << " is now in Gate keeper mode.\n" << std::endl;
+	if (this->getHp() <= 0)
+		std::cout << "Scavtrap " << this->getName() << " is dead\n";
+	else
+		std::cout << "Scavtrap " << this->getName() << " is now in Gate keeper mode.\n" << std::endl;
 }

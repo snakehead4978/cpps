@@ -6,7 +6,7 @@
 /*   By: jla-chon <jla-chon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/03 22:46:18 by snek              #+#    #+#             */
-/*   Updated: 2025/03/04 18:30:57 by jla-chon         ###   ########.fr       */
+/*   Updated: 2025/06/02 17:02:00 by jla-chon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,14 @@
 
 ClapTrap::ClapTrap(void) : __name("No Name"), __hp(10), __mana(10), __str(0) { std::cout << "Claptrap Default constructor for " << this->getName() <<  " called\n"; }
 
-ClapTrap::ClapTrap(std::string name) : __name(name), __hp(10), __mana(10), __str(0) { std::cout << "Claptrap constructor for " << this->getName() <<  " called\n"; }
+ClapTrap::ClapTrap(std::string name) : __name(name), __hp(10), __mana(10), __str(0) { std::cout << "Claptrap overloaded constructor for " << this->getName() <<  " called\n"; }
 
 ClapTrap::ClapTrap(std::string name, int hp, int mana, int str) : __name(name), __hp(hp), __mana(mana), __str(str) { std::cout << "Claptrap overloaded constr for " << this->getName() <<  " called\n"; }
 
 ClapTrap::~ClapTrap() { std::cout << "Claptrap Destructor for " << this->getName() <<  " called\n"; }
 
-ClapTrap::ClapTrap(const ClapTrap& t)
+ClapTrap::ClapTrap(const ClapTrap& t) : __name(t.getName()), __hp(t.getHp()), __mana(t.getMana()), __str(t.getStr())
 {
-	*this = t;
 	std::cout << "Claptrap Copy constructor for " << this->getName() <<  " called\n";
 }
 

@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jeremie <jeremie@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jla-chon <jla-chon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/22 22:29:44 by jeremie           #+#    #+#             */
-/*   Updated: 2025/05/27 19:23:30 by jeremie          ###   ########.fr       */
+/*   Updated: 2025/06/03 11:34:31 by jla-chon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Animal.hpp"
+// #include "Animal.hpp"
+// #include "WrongAnimal.hpp"
 #include "Cat.hpp"
 #include "Dog.hpp"
-#include "WrongAnimal.hpp"
 #include "WrongCat.hpp"
 #include <iostream>
 
@@ -53,18 +53,26 @@ void	testWrongAnimal()
 
 void	testIdeas()
 {
+	std::cout << "\nCreation of Cat\n";
 	Cat *a = new Cat;
-	std::cout << "\n\n";
+	std::cout << "\nCreation of Cat2 from Cat1 and setting idea 0 to lulw\n";
 	a->setIdea(0, "lulw");
 	Cat *b = new Cat(*a);
-	std::cout << "\n\n";
+	std::cout << "\nCreation of Cat 3 then copy assigning Cat1 to it\n";
+	Cat *c = new Cat();
+	*c = *a;
+	std::cout << "\nGetting idea 1 from Cat1\n";
 	std::cout << a->getIdea(1) << std::endl;
-	std::cout << "\n\n";
+	std::cout << "\nGetting idea 0 from Cat2\n";
 	std::cout << b->getIdea(0) << std::endl;
-	std::cout << "\n\n";
+	std::cout << "\nGetting idea 0 from Cat3\n";
+	std::cout << c->getIdea(0) << std::endl;
+	std::cout << "\nDelete Cat1\n";
 	delete a;
-	std::cout << "\n\n";
+	std::cout << "\nDelete Cat2\n";
 	delete b;
+	std::cout << "\nDelete Cat3\n";
+	delete c;
 }
 
 int main()

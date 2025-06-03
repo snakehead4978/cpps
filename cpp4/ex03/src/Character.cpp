@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Character.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jeremie <jeremie@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jla-chon <jla-chon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/27 20:26:02 by jeremie           #+#    #+#             */
-/*   Updated: 2025/05/27 21:43:34 by jeremie          ###   ########.fr       */
+/*   Updated: 2025/06/03 12:02:14 by jla-chon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ void	Character::equip(AMateria *m)
 		return ;
 	}
 	int	i = 0;
-	while (__inventory[i] && i < 4)
+	while (i < 4 && __inventory[i])
 		i++;
 	if (i == 4)
 	{

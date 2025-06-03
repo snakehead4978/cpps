@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   MateriaSource.cpp                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jeremie <jeremie@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jla-chon <jla-chon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/27 21:14:32 by jeremie           #+#    #+#             */
-/*   Updated: 2025/05/27 21:40:04 by jeremie          ###   ########.fr       */
+/*   Updated: 2025/06/03 12:01:33 by jla-chon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ void	MateriaSource::learnMateria(AMateria *spell)
 		return ;
 	}
 	int	i = 0;
-	while (__inventory[i] && i < 4)
+	while (i < 4 && __inventory[i])
 		i++;
 	if (i == 4)
 	{

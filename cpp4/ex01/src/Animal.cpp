@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Animal.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jeremie <jeremie@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jla-chon <jla-chon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/22 22:07:53 by jeremie           #+#    #+#             */
-/*   Updated: 2025/05/27 18:07:13 by jeremie          ###   ########.fr       */
+/*   Updated: 2025/06/03 10:52:22 by jla-chon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 Animal::Animal() : __type("no type") { std::cout << "Default Animal constructor for no type called\n"; }
 
-Animal::Animal(std::string type) : __type(type) { std::cout << "Animal constructor for " << __type << " called\n"; }
+Animal::Animal(std::string type) : __type(type) { std::cout << "Animal overoaded constructor for " << __type << " called\n"; }
 
 Animal::~Animal() { std::cout << "Animal Destructor for " << __type << " called\n"; }
 
@@ -34,7 +34,7 @@ Animal&	 Animal::operator=(const Animal& t)
 	return (*this);
 }
 
-std::string Animal::getType() const
+const std::string &Animal::getType() const
 {
 	return (__type);
 }

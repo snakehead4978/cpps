@@ -3,31 +3,37 @@
 /*                                                        :::      ::::::::   */
 /*   ClapTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: snek <snek@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: jla-chon <jla-chon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/03 22:46:18 by snek              #+#    #+#             */
-/*   Updated: 2025/03/03 23:45:43 by snek             ###   ########.fr       */
+/*   Updated: 2025/06/01 17:30:16 by jla-chon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
 
+ClapTrap::ClapTrap() : __name("no name"), __hp(10), __mana(10), __str(0) { std::cout << "Default constructor called\n"; }
 
-ClapTrap::ClapTrap(std::string name) : __name(name), __hp(10), __mana(10), __str(0) { std::cout << "Default constructor called\n"; }
+ClapTrap::ClapTrap(std::string name) : __name(name), __hp(10), __mana(10), __str(0) { std::cout << "Overloaded constructor for " << name << " called\n"; }
 
-ClapTrap::~ClapTrap() { std::cout << "Destructor called\n"; }
+ClapTrap::~ClapTrap() { std::cout << "Destructor for " << __name << " called\n"; }
 
 ClapTrap::ClapTrap(const ClapTrap& t)
 {
-	std::cout << "Copy constructor called\n";
-	*this = t;
+	std::cout << "Copy constructor for " << t.__name << " called\n";
+	__name = t.__name;
+	__hp = t.__hp;
+	__str = t.__str;
+	__mana = t.__mana;
+	// *this = t;
 }
 
 ClapTrap&	 ClapTrap::operator=(const ClapTrap& t)
 {
-	std::cout << "Copy assignment operator called\n";
+	std::cout << "Copy assignment operator for " << t.__name << " called\n";
 	if (this != &t)
 	{
+		this->__name = t.__name;
 		this->__hp = t.__hp;
 		this->__mana = t.__mana;
 		this->__str = t.__str;
@@ -52,7 +58,7 @@ void	ClapTrap::attack(const std::string& target)
 		return ;
 	this->__mana--;
 	std::cout << "ClapTrap " << this->__name;
-	std::cout << "attacks " << target;
+	std::cout << " attacks " << target;
 	std::cout << ", causing " << this->__str;
 	std::cout << " points of damage!\n";
 }
@@ -66,9 +72,9 @@ void	ClapTrap::takeDamage(unsigned int amount)
 		return ;
 	}
 	this->__hp -= amount;
-	std::cout << "ClapTrap" << this->__name << "takes " << amount << " damage ";
+	std::cout << "ClapTrap " << this->__name << " takes " << amount << " damage";
 	if (this->__hp <= 0)
-		std::cout << "and is ready for decommission!";
+		std::cout << " and is ready for decommission!";
 	std::cout << std::endl;
 }
 
@@ -78,6 +84,8 @@ void	ClapTrap::beRepaired(unsigned int amount)
 		return ;
 	this->__mana--;
 	std::cout << "ClapTrap " << this->__name;
-	std::cout << "heals itself for " << amount << " health.\n";
+	std::cout << " heals itself for " << amount << " health.\n";
 	this->__hp += amount;
 }
+
+int		ClapTrap::getHp() const { return (__hp); }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   WrongAnimal.cpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jeremie <jeremie@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jla-chon <jla-chon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/27 17:47:11 by jeremie           #+#    #+#             */
-/*   Updated: 2025/05/27 18:10:01 by jeremie          ###   ########.fr       */
+/*   Updated: 2025/06/03 11:09:57 by jla-chon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 WrongAnimal::WrongAnimal() : __type("no type") { std::cout << "WrongAnimal Default constructor for no type called\n"; }
 
-WrongAnimal::WrongAnimal(std::string type) : __type(type) { std::cout << "WrongAnimal Default constructor for " << type << " called\n"; }
+WrongAnimal::WrongAnimal(std::string type) : __type(type) { std::cout << "WrongAnimal overloaded constructor for " << type << " called\n"; }
 
 WrongAnimal::~WrongAnimal() { std::cout << "WrongAnimal Destructor for " << __type << " called\n"; }
 
@@ -39,7 +39,7 @@ void	WrongAnimal::makeSound() const
 	std::cout << "??? nOiSeS\n";
 }
 
-std::string WrongAnimal::getType() const
+const std::string WrongAnimal::getType() const
 {
 	return (__type);
 }

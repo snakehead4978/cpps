@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Cat.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jeremie <jeremie@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jla-chon <jla-chon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/22 22:20:42 by jeremie           #+#    #+#             */
-/*   Updated: 2025/05/27 19:12:25 by jeremie          ###   ########.fr       */
+/*   Updated: 2025/06/03 11:25:04 by jla-chon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ class Cat : public Animal
 		Cat();
 		Cat(const Cat& t);
 		Cat&	operator=(const Cat& t);
-		~Cat();
+		virtual	~Cat();
 		void	makeSound() const;
 		void		setIdeas(std::string);
 		void		setIdea(int, std::string);
