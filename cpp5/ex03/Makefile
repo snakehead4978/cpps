@@ -7,7 +7,9 @@ CFLAGS += -std=c++98
 
 INC = -I.
 
-SRC_FILES = main.cpp Bureaucrat.cpp AForm.cpp ShrubberyCreationForm.cpp RobotomyRequestForm.cpp PresidentialPardonForm.cpp
+SRC_FILES = main.cpp Bureaucrat.cpp AForm.cpp ShrubberyCreationForm.cpp \
+			RobotomyRequestForm.cpp PresidentialPardonForm.cpp \
+			Intern.cpp
 
 OBJ = $(SRC_FILES:.cpp=.o)
 

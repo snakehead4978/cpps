@@ -6,7 +6,7 @@
 /*   By: jeremie <jeremie@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/04 22:29:50 by jeremie           #+#    #+#             */
-/*   Updated: 2025/06/05 00:24:12 by jeremie          ###   ########.fr       */
+/*   Updated: 2025/06/06 22:55:58 by jeremie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 Intern::Intern() {}
 
-Intern::Intern(const Intern &t) {}
+Intern::Intern(const Intern &t) { (void)t; }
 
-Intern	&Intern::operator=(const Intern &t) { return (*this); }
+Intern	&Intern::operator=(const Intern &t) { (void)t; return (*this); }
 
 Intern::~Intern() {}
 
@@ -37,7 +37,7 @@ static AForm *pres(std::string target)
 
 AForm	*Intern::makeForm(std::string form, std::string target) const
 {
-	static const std::string _forms[] = {"shrubbery", "robotomy", "presidential"};
+	static const std::string _forms[] = {"shrubbery creation", "robotomy request", "presidential pardon"};
 	static AForm *(*forms[])(std::string) = {&shrub, &robot, &pres};
 	for (int i = 0; i < 3; i++)
 	{
@@ -47,6 +47,6 @@ AForm	*Intern::makeForm(std::string form, std::string target) const
 			return (forms[i](target));
 		}
 	}
-	std::cout << "Intern does not know how to create " << form << " form. It only knows how to make [shrubbery, robotomy, presidential] forms.\n";
+	std::cout << "Intern does not know how to create " << form << " form. It only knows how to make [shrubbery creation, robotomy request, presidential pardon] forms.\n";
 	return (0);
 }
