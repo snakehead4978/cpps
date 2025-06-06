@@ -6,7 +6,7 @@
 /*   By: jeremie <jeremie@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/02 01:27:34 by snek              #+#    #+#             */
-/*   Updated: 2025/05/30 17:34:52 by jeremie          ###   ########.fr       */
+/*   Updated: 2025/05/31 23:25:09 by jeremie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ Fixed::~Fixed() { std::cout << "Destructor called\n"; }
 Fixed::Fixed(const Fixed& t)
 {
 	std::cout << "Copy constructor called\n";
+	// if same as subject uncomment below:
+	// *this = t;
 	__value = t.getRawBits();
 }
 

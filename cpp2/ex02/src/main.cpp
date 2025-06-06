@@ -6,7 +6,7 @@
 /*   By: jeremie <jeremie@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/02 01:01:14 by snek              #+#    #+#             */
-/*   Updated: 2025/05/31 02:28:45 by jeremie          ###   ########.fr       */
+/*   Updated: 2025/05/31 23:36:47 by jeremie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,5 +27,18 @@ int	main()
 	
 	std::cout << Fixed::max( a, b ) << std::endl;
 	
+	
+	// Fixed c(3.1f);
+	// Fixed d(4.2f);
+	// std::cout << "Fixed c:" << c << " and d:" << d << std::endl;
+	// std::cout << (c < d) << std::endl;
+	// std::cout << (c > d) << std::endl;
+	// std::cout << (c <= d) << std::endl;
+	// std::cout << (c >= d) << std::endl;
+	// std::cout << (c == d) << std::endl;
+	// std::cout << c + d << std::endl;
+	// std::cout << c - d << std::endl;
+	// std::cout << c * d << std::endl;
+	// std::cout << c / d << std::endl;
 	return 0;
 }
