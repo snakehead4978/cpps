@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ShrubberyCreationForm.cpp                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jeremie <jeremie@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jla-chon <jla-chon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/04 21:05:35 by jeremie           #+#    #+#             */
-/*   Updated: 2025/06/04 22:19:19 by jeremie          ###   ########.fr       */
+/*   Updated: 2025/06/07 15:03:04 by jla-chon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,8 @@ void	ShrubberyCreationForm::toExecute(Bureaucrat const & executor) const
 	outfile.open((_target + "_shrubbery").c_str());
 	if (outfile.is_open())
 	{
+		outfile << "       *\n      ***\n     *****\n    *******\n   *********\n  ***********\n *************\n      |||\n\n\n";
+		outfile << "       *\n      ***\n     *****\n    *******\n   *********\n  ***********\n *************\n      |||\n";
 		outfile << "ASCII trees\n";
 		outfile.close();
 	}
