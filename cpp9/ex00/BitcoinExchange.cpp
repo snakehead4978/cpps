@@ -6,7 +6,7 @@
 /*   By: jeremie <jeremie@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 12:09:53 by jeremie           #+#    #+#             */
-/*   Updated: 2025/06/17 13:06:35 by jeremie          ###   ########.fr       */
+/*   Updated: 2025/06/18 03:19:26 by jeremie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,17 +34,25 @@ void	BitcoinExchange::setEntry(std::string date, double num)
 	{
 		Date	d(date);
 		std::pair<Date, double>p(d, num);
-		_data.insert(p);
+		if (!_data.insert(p).second)
+			throw std::invalid_argument("Duplicate dates.");
 	}
 	catch(const std::exception& e)
 	{
-		std::cerr << e.what() << '\n';
+		if (static_cast<std::string>(e.what()) == "Duplicate dates.")
+			throw e;
+		std::cerr << "Error: " << e.what() << '\n';
 		return ;
 	}
 }
 
 double	BitcoinExchange::getEntry(const Date &date) const
 {
+	if (date < _data.begin()->first)
+		throw std::out_of_range("Bitcoin has not been invented yet.");
+	bool	equal = _data.count(date);
 	std::map<Date, double>::const_iterator	num = _data.lower_bound(date);
-	return (num->second);
+	if (equal)
+		return (num->second);
+	return ((--num)->second);
 }
