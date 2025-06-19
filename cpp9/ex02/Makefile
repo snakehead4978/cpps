@@ -1,4 +1,4 @@
-NAME = RPN
+NAME = PmergeMe
 
 CC = c++
 
@@ -9,7 +9,7 @@ INC = -I.
 
 OBJ_DIR = obj/
 
-SRC_FILES = main.cpp RPN.cpp
+SRC_FILES = main.cpp PmergeMe.cpp
 
 OBJ = $(addprefix $(OBJ_DIR), $(SRC_FILES:.cpp=.o))
 
