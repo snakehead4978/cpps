@@ -6,7 +6,7 @@
 /*   By: jla-chon <jla-chon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/22 00:35:07 by jeremie           #+#    #+#             */
-/*   Updated: 2025/06/24 17:26:36 by jla-chon         ###   ########.fr       */
+/*   Updated: 2025/06/24 19:02:04 by jla-chon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,12 @@ void	printList(iter begin, iter end, int grouping, int bol)
 		std::cout << "----Printer end----\n";
 }
 
-template<template <typename, typename> typename container, typename iter>
-int	operate(container<int, std::allocator<int> > &res, container<int, std::allocator<int> > &pend, iter num, container<int, std::allocator<int> > &vec)
+template<template <typename, typename> class container, typename iter>
+int	operate(container<int, std::allocator<int> > &res, container<int, std::allocator<int> > &pend, iter num, container<int, std::allocator<int> > &vec, iter &end)
 {
-	iter pos = std::lower_bound(res.begin(), res.end(), *num);
+	iter pos = std::lower_bound(res.begin(), end + 1, *num);
+	if (pos == end + 1)
+		end--;
 	int result = pos - res.begin();
 	res.insert(pos, *num);
 	pend.erase(num);
@@ -59,7 +61,7 @@ unsigned int jacob(int num)
 	return ((pow(2, num) + one) * 2 / 3);
 }
 
-template<typename iter, template <typename, typename> typename container>
+template<typename iter, template <typename, typename> class container>
 void	sortUp(iter begin, bool leftover, int recursion, iter ender, int pairs, container<int, std::allocator<int> > &res, container<int, std::allocator<int> > &pend, container<int, std::allocator<int> > &vec)
 {
 	for (int i = 0; i < pairs; i++)
@@ -71,18 +73,27 @@ void	sortUp(iter begin, bool leftover, int recursion, iter ender, int pairs, con
 		pend.push_back(*(begin + pairs * recursion));
 	int i = 0;
 	unsigned int jac;
+	res.insert(res.begin(), pend[0]);
+	pend.erase(pend.begin());
+	std::rotate(begin, ender, ender + recursion / 2);
+	iter it;
+	int jacsum = 1;
+	int jactmp;
 	while (pend.size())
 	{
 		jac = jacob(i + 1);
 		if (jac > pend.size())
 			jac = pend.size();
+		jactmp = jac;
+		it = begin + jacsum + jac - 1;
 		while (pend.size() && jac--)
 		{
 			iter tmp = ender + jac * recursion / 2;
-			int s = operate(res, pend, pend.begin() + jac, vec);
+			int s = operate(res, pend, pend.begin() + jac, vec, it);
 			std::rotate(begin + s * recursion / 2, tmp, tmp + recursion / 2);
 			ender += recursion / 2;
 		}
+		jacsum += jactmp * 2;
 		i++;
 	}
 	res.clear();
@@ -101,7 +112,7 @@ void	moveToEnd(iter begin, int pairs, int recursion)
 	}
 }
 
-template<typename iter, template <typename, typename> typename container>
+template<typename iter, template <typename, typename> class container>
 void	pairUp(iter begin, int size, int recursion, iter end, container<int, std::allocator<int> > &res, container<int, std::allocator<int> > &pend, container<int, std::allocator<int> > &vec)
 {
 	if (recursion >= std::numeric_limits<int>::max() / 2)
