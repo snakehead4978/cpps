@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jla-chon <jla-chon@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jeremie <jeremie@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/22 00:35:07 by jeremie           #+#    #+#             */
-/*   Updated: 2025/06/24 19:02:04 by jla-chon         ###   ########.fr       */
+/*   Updated: 2025/06/24 20:48:22 by jeremie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,13 +41,15 @@ void	printList(iter begin, iter end, int grouping, int bol)
 }
 
 template<template <typename, typename> class container, typename iter>
-int	operate(container<int, std::allocator<int> > &res, container<int, std::allocator<int> > &pend, iter num, container<int, std::allocator<int> > &vec, iter &end)
+int	operate(container<int, std::allocator<int> > &res, container<int, std::allocator<int> > &pend, iter num, container<int, std::allocator<int> > &vec, iter &end, int tmp2)
 {
 	iter pos = std::lower_bound(res.begin(), end + 1, *num);
-	if (pos == end + 1)
-		end--;
 	int result = pos - res.begin();
 	res.insert(pos, *num);
+	if (result == end + 1 - res.begin())
+		end = res.begin() + tmp2 - 1;
+	else
+		end = res.begin() + tmp2;
 	pend.erase(num);
 	(void) vec;
 	return (result);
@@ -76,6 +78,7 @@ void	sortUp(iter begin, bool leftover, int recursion, iter ender, int pairs, con
 	res.insert(res.begin(), pend[0]);
 	pend.erase(pend.begin());
 	std::rotate(begin, ender, ender + recursion / 2);
+	ender += recursion / 2;
 	iter it;
 	int jacsum = 1;
 	int jactmp;
@@ -85,11 +88,12 @@ void	sortUp(iter begin, bool leftover, int recursion, iter ender, int pairs, con
 		if (jac > pend.size())
 			jac = pend.size();
 		jactmp = jac;
-		it = begin + jacsum + jac - 1;
+		int tmp2 = jacsum + jac - 1;
+		it = res.begin() + tmp2;
 		while (pend.size() && jac--)
 		{
 			iter tmp = ender + jac * recursion / 2;
-			int s = operate(res, pend, pend.begin() + jac, vec, it);
+			int s = operate(res, pend, pend.begin() + jac, vec, it, tmp2);
 			std::rotate(begin + s * recursion / 2, tmp, tmp + recursion / 2);
 			ender += recursion / 2;
 		}
