@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Span.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jeremie <jeremie@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jla-chon <jla-chon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/10 23:08:15 by jeremie           #+#    #+#             */
-/*   Updated: 2025/06/11 04:41:54 by jeremie          ###   ########.fr       */
+/*   Updated: 2025/06/24 17:02:44 by jla-chon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int	Span::shortestSpan()
 	std::sort(_list.begin(), _list.end());
 	std::vector<int>	v(_list.size(), 0);
 	std::adjacent_difference(_list.begin(), _list.end(), v.begin());
-	return (*std::min_element(v.begin(), v.end()));
+	return (*std::min_element(v.begin() + 1, v.end()));
 }
 
 int	Span::longestSpan()

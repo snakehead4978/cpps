@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   test.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jeremie <jeremie@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jla-chon <jla-chon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/23 04:17:30 by jeremie           #+#    #+#             */
-/*   Updated: 2025/06/24 04:41:26 by jeremie          ###   ########.fr       */
+/*   Updated: 2025/06/24 13:34:08 by jla-chon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int jacob(int num)
 	return ((pow(2, num) + one) * 2 / 3);
 }
 
-
+long _jacobsthal_number(long n) { return round((pow(2, n + 1) + pow(-1, n)) / 3); }
 
 int main(int ac, char **av)
 {
@@ -34,6 +34,6 @@ int main(int ac, char **av)
 	// std::cout << vec[0] << std::endl;
 	// std::cout << vec[4] << std::endl;
 	// std::cout << vec[7] << std::endl;
-	std::cout << jacob(atoi(av[1])) << std::endl;
+	std::cout << _jacobsthal_number(atoi(av[1])) << std::endl;
 	return 0;
 }

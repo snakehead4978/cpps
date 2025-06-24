@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jeremie <jeremie@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jla-chon <jla-chon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/09 18:09:55 by jeremie           #+#    #+#             */
-/*   Updated: 2025/06/09 18:39:44 by jeremie          ###   ########.fr       */
+/*   Updated: 2025/06/24 17:36:09 by jla-chon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,26 +59,30 @@ void	identify(Base *p)
 
 void	identify(Base &p)
 {
+	Base f;
 	try
 	{
-		dynamic_cast<A &>(p);
+		f = dynamic_cast<A &>(p);
 		std::cout << &p << " is an object of class A\n";
+		(void) f;
 	}
 	catch (const std::exception &e)
 	{
 		(void)e;
 		try
 		{
-			dynamic_cast<B &>(p);
+			f = dynamic_cast<B &>(p);
 			std::cout << &p << " is an object of class B\n";
+			(void) f;
 		}
 		catch (const std::exception &e)
 		{
 			(void)e;
 			try
 			{
-				dynamic_cast<C &>(p);
+				f = dynamic_cast<C &>(p);
 				std::cout << &p << " is an object of class C\n";
+				(void) f;
 			}
 			catch (const std::exception &e)
 			{

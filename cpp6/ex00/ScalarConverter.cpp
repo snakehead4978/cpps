@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ScalarConverter.cpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jeremie <jeremie@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jla-chon <jla-chon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/09 00:16:28 by jeremie           #+#    #+#             */
-/*   Updated: 2025/06/09 02:43:55 by jeremie          ###   ########.fr       */
+/*   Updated: 2025/06/24 17:26:08 by jla-chon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ static void	display(int inf, bool sign, double number)
 	else
 		std::cout << "impossible\n";
 	std::cout << "int: ";
-	if (inf)
+	if (inf || std::numeric_limits<double>::infinity() == number)
 	{
 		if (inf == -1)
 			std::cout << "impossible\n";
@@ -64,7 +64,7 @@ static void	display(int inf, bool sign, double number)
 			std::cout << static_cast<int>(number) << std::endl;
 	}
 	std::cout << "float: ";
-	if (inf)
+	if (inf || std::numeric_limits<double>::infinity() == number)
 	{
 		if (sign)
 			std::cout << "-";
@@ -79,10 +79,15 @@ static void	display(int inf, bool sign, double number)
 			std::cout << "overflows\n";
 		else
 		{
-			std::cout << std::setprecision(1) << std::fixed;
-			std::cout << static_cast<float>(number) << "f" << std::endl;
-			std::cout << std::setprecision(6);
-			std::cout.unsetf(std::ios::fixed);
+			if (number >= 100000 || number <= 0.000001)
+				std::cout << static_cast<float>(number) << "f" << std::endl;
+			else
+			{
+				std::cout << std::setprecision(1) << std::fixed;
+				std::cout << static_cast<float>(number) << "f" << std::endl;
+				std::cout << std::setprecision(6);
+				std::cout.unsetf(std::ios::fixed);
+			}
 		}
 	}
 	std::cout << "double: ";
@@ -97,10 +102,15 @@ static void	display(int inf, bool sign, double number)
 	}
 	else
 	{
-		std::cout << std::setprecision(1) << std::fixed;
-		std::cout << number << std::endl;
-		std::cout << std::setprecision(6);
-		std::cout.unsetf(std::ios::fixed);
+		if (number >= 100000 || number <= 0.000001)
+			std::cout << number << std::endl;
+		else
+		{
+			std::cout << std::setprecision(1) << std::fixed;
+			std::cout << number << std::endl;
+			std::cout << std::setprecision(6);
+			std::cout.unsetf(std::ios::fixed);
+		}
 	}
 }
 
@@ -116,7 +126,7 @@ void	ScalarConverter::convert(const std::string &str)
 		std::cout << "Please input something.\n";
 		return ;
 	}
-	if (str.length() == 1 && (str[0] < '0' || str[0] > '1'))
+	if (str.length() == 1 && (str[0] < '0' || str[0] > '9'))
 	{
 		isChar = 1;
 		number = str[0];
