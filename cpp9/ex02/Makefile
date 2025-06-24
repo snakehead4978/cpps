@@ -9,7 +9,7 @@ INC = -I.
 
 OBJ_DIR = obj/
 
-SRC_FILES = main.cpp PmergeMe.cpp
+SRC_FILES = main.cpp
 
 OBJ = $(addprefix $(OBJ_DIR), $(SRC_FILES:.cpp=.o))
 
