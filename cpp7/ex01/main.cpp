@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jeremie <jeremie@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jla-chon <jla-chon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/10 02:33:00 by jeremie           #+#    #+#             */
-/*   Updated: 2025/06/10 02:45:54 by jeremie          ###   ########.fr       */
+/*   Updated: 2025/06/25 16:44:54 by jla-chon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,5 +42,7 @@ int main()
 	std::cout << std::endl;
 	::iter(array2, 4, func2);
 	std::cout << std::endl;
+	// ::iter(array2, 4, func3);
+	// std::cout << std::endl;
 	return (0);
 }

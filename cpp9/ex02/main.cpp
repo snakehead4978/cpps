@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jeremie <jeremie@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jla-chon <jla-chon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/22 00:35:07 by jeremie           #+#    #+#             */
-/*   Updated: 2025/06/24 20:48:22 by jeremie          ###   ########.fr       */
+/*   Updated: 2025/06/25 16:31:57 by jla-chon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,13 +40,33 @@ void	printList(iter begin, iter end, int grouping, int bol)
 		std::cout << "----Printer end----\n";
 }
 
+template<typename iter>
+void printer(iter a, iter b)
+{
+	std::cout << "{";
+	for (; a != b; a++)
+	{
+		std::cout << *a;
+		if (a != b - 1)
+			std::cout << ", ";
+	}
+	std::cout << "}\n";
+}
+
 template<template <typename, typename> class container, typename iter>
 int	operate(container<int, std::allocator<int> > &res, container<int, std::allocator<int> > &pend, iter num, container<int, std::allocator<int> > &vec, iter &end, int tmp2)
 {
 	iter pos = std::lower_bound(res.begin(), end + 1, *num);
+	std::cout << "Number of nums in list " << res.size() << ", numbers i compare to " << end - res.begin() + 1 << std::endl;
+	std::cout << "Current list: ";
+	printer(res.begin(), res.end());
+	std::cout << "My num " << *num << ",  ";
+	printer(res.begin(), end + 1);
+	std::cout << std::endl;
 	int result = pos - res.begin();
+	bool done = (result == end + 1 - res.begin());
 	res.insert(pos, *num);
-	if (result == end + 1 - res.begin())
+	if (done)
 		end = res.begin() + tmp2 - 1;
 	else
 		end = res.begin() + tmp2;
@@ -122,26 +142,26 @@ void	pairUp(iter begin, int size, int recursion, iter end, container<int, std::a
 	if (recursion >= std::numeric_limits<int>::max() / 2)
 		throw std::out_of_range("too many numbers");
 	int pairs = size / recursion;
-	if (pairs <= 1)
+	if (!pairs)
 		return ;
 	iter start = begin;
 	for (int i = 0; i < pairs; i++)
 	{
-		if (*start < *(start + recursion / 2))
+		if (*start < *(start + recursion / 2) && pairs != 1)
 			std::rotate(start, start + recursion /2, start + recursion);
 		start += recursion;
 	}
 	bool leftover = size % recursion / (recursion / 2);
+	pairUp(begin, size, recursion * 2, end, res, pend, vec);
 	printList(begin, end, recursion, 1);
 	std::cout << "------sort------\n";
-	pairUp(begin, size, recursion * 2, end, res, pend, vec);
 	moveToEnd(begin, pairs, recursion);
 	sortUp(begin, leftover, recursion, begin + (pairs * recursion / 2), pairs, res, pend, vec);
-	printList(begin, end, recursion, 2);
-	std::cout << "This pair has ";
-	if (!leftover)
-		std::cout << "no ";
-	std::cout << "leftovers\n";
+	printList(begin, end, recursion, 2);	
+	// std::cout << "This pair has ";
+	// if (!leftover)
+		// std::cout << "no ";
+	// std::cout << "leftovers\n";
 }
 
 int	main(int ac, char **av)
