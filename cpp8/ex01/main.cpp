@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jeremie <jeremie@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jla-chon <jla-chon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/11 00:05:08 by jeremie           #+#    #+#             */
-/*   Updated: 2025/06/11 04:43:16 by jeremie          ###   ########.fr       */
+/*   Updated: 2025/06/26 16:41:11 by jla-chon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ int	main()
 	std::vector<int> v(10001, 5);
 	Span	sp4(10001);
 	sp4.addNumbers(v.begin(), v.end());
+	std::cout << sp4.shortestSpan() << std::endl;
 	std::cout << sp4.longestSpan() << std::endl;
 	try
 	{

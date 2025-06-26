@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jeremie <jeremie@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jla-chon <jla-chon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/10 03:34:26 by jeremie           #+#    #+#             */
-/*   Updated: 2025/06/10 04:01:14 by jeremie          ###   ########.fr       */
+/*   Updated: 2025/06/26 16:18:09 by jla-chon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ int	main()
 
     Array<int> numbers(10);
     int* mirror = new int[10];
+	Array<int> f;
+	(void)f;
     srand(time(NULL));
     for (int i = 0; i < 10; i++)
     {

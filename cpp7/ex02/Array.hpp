@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   Array.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jeremie <jeremie@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jla-chon <jla-chon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/10 02:46:49 by jeremie           #+#    #+#             */
-/*   Updated: 2025/06/10 04:00:44 by jeremie          ###   ########.fr       */
+/*   Updated: 2025/06/26 16:02:40 by jla-chon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef ARRAY_HPP
 # define ARRAY_HPP
 
-# include <exception>
+# include <stdexcept>
 
 template<typename T>
 class	Array
@@ -45,15 +45,10 @@ class	Array
 		T	&operator[](unsigned int N)
 		{
 			if (N >= _size)
-				throw OutOfBounds();
+				throw std::out_of_range("Index is out of bounds");
 			return (_array[N]);
 		}
-		class OutOfBounds : public std::exception
-		{
-			public:
-				const char	*what() const throw() { return ("Index is out of bounds\n"); }
-		};
-		unsigned int	size() const { return (_size); }
+		unsigned int	size() const;
 };
 
 
