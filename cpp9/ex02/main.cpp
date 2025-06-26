@@ -6,7 +6,7 @@
 /*   By: jla-chon <jla-chon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/22 00:35:07 by jeremie           #+#    #+#             */
-/*   Updated: 2025/06/25 16:31:57 by jla-chon         ###   ########.fr       */
+/*   Updated: 2025/06/26 18:20:17 by jla-chon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,12 +57,12 @@ template<template <typename, typename> class container, typename iter>
 int	operate(container<int, std::allocator<int> > &res, container<int, std::allocator<int> > &pend, iter num, container<int, std::allocator<int> > &vec, iter &end, int tmp2)
 {
 	iter pos = std::lower_bound(res.begin(), end + 1, *num);
-	std::cout << "Number of nums in list " << res.size() << ", numbers i compare to " << end - res.begin() + 1 << std::endl;
-	std::cout << "Current list: ";
-	printer(res.begin(), res.end());
-	std::cout << "My num " << *num << ",  ";
-	printer(res.begin(), end + 1);
-	std::cout << std::endl;
+	// std::cout << "Number of nums in list " << res.size() << ", numbers i compare to " << end - res.begin() + 1 << std::endl;
+	// std::cout << "Current list: ";
+	// printer(res.begin(), res.end());
+	// std::cout << "My num " << *num << ",  ";
+	// printer(res.begin(), end + 1);
+	// std::cout << std::endl;
 	int result = pos - res.begin();
 	bool done = (result == end + 1 - res.begin());
 	res.insert(pos, *num);
@@ -153,15 +153,23 @@ void	pairUp(iter begin, int size, int recursion, iter end, container<int, std::a
 	}
 	bool leftover = size % recursion / (recursion / 2);
 	pairUp(begin, size, recursion * 2, end, res, pend, vec);
-	printList(begin, end, recursion, 1);
-	std::cout << "------sort------\n";
+	// printList(begin, end, recursion, 1);
+	// std::cout << "------sort------\n";
 	moveToEnd(begin, pairs, recursion);
 	sortUp(begin, leftover, recursion, begin + (pairs * recursion / 2), pairs, res, pend, vec);
-	printList(begin, end, recursion, 2);	
+	// printList(begin, end, recursion, 2);
 	// std::cout << "This pair has ";
 	// if (!leftover)
 		// std::cout << "no ";
 	// std::cout << "leftovers\n";
+}
+
+template <typename iter>
+void	printFinal(iter it1, iter it2)
+{
+	for (;it1 != it2; it1++)
+		std::cout << *it1 << " ";
+	std::cout << std::endl;
 }
 
 int	main(int ac, char **av)
@@ -181,13 +189,52 @@ int	main(int ac, char **av)
 		lst.push_back(num);
 		i++;
 	}
-	// timer start
-	std::vector<int> vec(lst.begin(), lst.end());
-	printList(vec.begin(), vec.end(), 1, 0);
-	std::vector<int> res;
-	std::vector<int> pend;
-	pairUp(vec.begin(), vec.size(), 2, vec.end(), res, pend, vec);
-	std::cout << "\nThe end\n";
-	printList(vec.begin(), vec.end(), 1, 0);
+	float vec_time;
+	float deq_time;
+	(void) vec_time;
+	(void) deq_time;
+	std::vector<int> vec;
+	std::deque<int> deq;
+	try
+	{
+		// timer start
+		vec.assign(lst.begin(), lst.end());
+		std::vector<int> vec(lst.begin(), lst.end());
+		// printList(vec.begin(), vec.end(), 1, 0);
+		std::vector<int> res;
+		std::vector<int> pend;
+		pairUp(vec.begin(), vec.size(), 2, vec.end(), res, pend, vec);
+		// std::cout << "\nThe end\n";
+		// printList(vec.begin(), vec.end(), 1, 0);
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+		return (1);
+	}
+	try
+	{
+		deq.assign(lst.begin(), lst.end());
+		// printList(vec.begin(), vec.end(), 1, 0);
+		std::deque<int> res;
+		std::deque<int> pend;
+		pairUp(deq.begin(), deq.size(), 2, deq.end(), res, pend, deq);
+		// std::cout << "\nThe end\n";
+		// printList(vec.begin(), vec.end(), 1, 0);
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+		return (1);
+	}
+	if (!std::equal(vec.begin(), vec.end(), deq.begin()))
+		std::cout << "Lists aren't the same.\n";
+	std::cout << "Before:\t";
+	printFinal(lst.begin(), lst.end());
+	std::cout << "After:\t";
+	printFinal(vec.begin(), vec.end());
+	printFinal(deq.begin(), deq.end());
+	
+	
 	return (0);
 }
