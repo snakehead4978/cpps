@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PmergeMe.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jeremie <jeremie@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jla-chon <jla-chon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/19 09:00:30 by jeremie           #+#    #+#             */
-/*   Updated: 2025/06/26 21:34:06 by jeremie          ###   ########.fr       */
+/*   Updated: 2025/06/29 15:13:37 by jla-chon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@
 
 // # include <stdlib.h>
 // # include <utility>
+
+// extern int comps;
 
 unsigned int jacob(int num);
 
@@ -79,6 +81,7 @@ template<template <typename, typename> class container, typename iter>
 int	operate(container<int, std::allocator<int> > &res, container<int, std::allocator<int> > &pend, iter num, iter &end, int tmp2)
 {
 	iter pos = std::lower_bound(res.begin(), end + 1, *num);
+	// comps += floor(log2(end - res.begin() + 1)) + 1;
 	// std::cout << "Number of nums in list " << res.size() << ", numbers i compare to " << end - res.begin() + 1 << std::endl;
 	// std::cout << "Current list: ";
 	// printer(res.begin(), res.end());
@@ -162,6 +165,7 @@ void	pairUp(iter begin, int size, int recursion, iter end, container<int, std::a
 	iter start = begin;
 	for (int i = 0; i < pairs; i++)
 	{
+		// comps++;
 		if (*start < *(start + recursion / 2))
 			std::rotate(start, start + recursion /2, start + recursion);
 		start += recursion;
